@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">CikaraHotelBooking</string>
+
+
+    <string name="home_room_list">Room List</string>
+    <string name="home_booking_list">My Booking</string>
+    <string name="home_gallery">Gallery</string>
+    <string name="home_location">Location</string>
+    <string name="home_info">Info</string>
+    <string name="home_myaccount">My Account</string>
+
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_login">Login</string>
+    <string name="login_register">Tidak Punya Akun? Sini Daftar</string>
+    <string name="login_pt">SAPPHIRE CITY PARK</string>
+
+    <string name="register">Daftar</string>
+    <string name="register_name">Nama Lengkap</string>
+    <string name="register_address">Alamat</string>
+    <string name="register_phoneNumber">Nomor HP</string>
+
+
+</resources>
