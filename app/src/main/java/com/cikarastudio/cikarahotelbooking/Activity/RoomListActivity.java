@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Adapter;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -35,7 +37,7 @@ public class RoomListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_list);
 
-        getSupportActionBar().setTitle("Room List");
+        getSupportActionBar().setTitle("Tipe Kamar");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         recyclerView = findViewById(R.id.rv_roomList);
@@ -45,14 +47,10 @@ public class RoomListActivity extends AppCompatActivity {
 
         requestQueue = Volley.newRequestQueue(this);
         parseJSON();
-//        tipeKamarAdapter = new TipeKamarAdapter(RoomListActivity.this, tipeKamarList);
-//        recyclerView.setAdapter(tipeKamarAdapter);
-
     }
 
     private void parseJSON() {
         String url = "http://kingdom.chatomz.com/json/hotel/tipe";
-
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -60,18 +58,28 @@ public class RoomListActivity extends AppCompatActivity {
                         try {
                             for (int i = 0; i < response.length(); i++) {
                                 JSONObject tipe = response.getJSONObject(i);
+                                String tipe_id = tipe.getString("id");
                                 String nama_tipe = tipe.getString("nama_tipe");
                                 String harga = tipe.getString("harga");
                                 String kapasitas = tipe.getString("kapasitas");
                                 String deskripsi = tipe.getString("deskripsi");
                                 String gambar = tipe.getString("gambar");
 
-                                tipeKamarList.add(new TipeKamar(nama_tipe, harga, kapasitas, deskripsi, gambar));
+                                tipeKamarList.add(new TipeKamar(tipe_id,nama_tipe, harga, kapasitas, deskripsi, gambar));
                             }
 
                             recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                             tipeKamarAdapter = new TipeKamarAdapter(getApplicationContext(), tipeKamarList);
                             recyclerView.setAdapter(tipeKamarAdapter);
+                            tipeKamarAdapter.setOnItemClickCallback(new TipeKamarAdapter.OnItemClickCallback() {
+                                @Override
+                                public void onItemClicked(TipeKamar data) {
+                                    Intent detailmassage = new Intent(RoomListActivity.this, KamarListActivity.class);
+                                    detailmassage.putExtra(KamarListActivity.EXTRA_TIPEKAMAR, data);
+                                    startActivity(detailmassage);
+                                }
+                            });
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

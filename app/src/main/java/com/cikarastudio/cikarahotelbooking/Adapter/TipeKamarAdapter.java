@@ -20,6 +20,16 @@ public class TipeKamarAdapter extends RecyclerView.Adapter<TipeKamarAdapter.Tipe
     private Context mContext;
     private ArrayList<TipeKamar> mTipeKamarList;
 
+    private OnItemClickCallback onItemClickCallback;
+
+    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback;
+    }
+
+    public interface OnItemClickCallback {
+        void onItemClicked(TipeKamar data);
+    }
+
     public TipeKamarAdapter(Context context, ArrayList<TipeKamar> tipeKamarList) {
         mContext = context;
         mTipeKamarList = tipeKamarList;
@@ -33,7 +43,7 @@ public class TipeKamarAdapter extends RecyclerView.Adapter<TipeKamarAdapter.Tipe
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TipeKamarViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final TipeKamarViewHolder holder, int position) {
         TipeKamar currentItem = mTipeKamarList.get(position);
 
         String tipekamar = currentItem.getNama_tipe();
@@ -47,6 +57,13 @@ public class TipeKamarAdapter extends RecyclerView.Adapter<TipeKamarAdapter.Tipe
         holder.kapasitas.setText(kapasitas+" orang/kamar");
         holder.deskripsi.setText(deskripsi);
         Picasso.with(mContext).load(img_kamar).fit().centerCrop().into(holder.img_kamar);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickCallback.onItemClicked(mTipeKamarList.get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override

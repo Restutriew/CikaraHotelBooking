@@ -12,8 +12,8 @@
     <string name="login_email">Email</string>
     <string name="login_password">Password</string>
     <string name="login_login">Login</string>
-    <string name="login_register">Tidak Punya Akun? Sini Daftar</string>
-    <string name="login_pt">SAPPHIRE CITY PARK</string>
+    <string name="login_register">Tidak punya akun? Daftar disini</string>
+    <string name="login_pt">SAPPHIRE HOME HOTEL</string>
 
     <string name="register">Daftar</string>
     <string name="register_name">Nama Lengkap</string>

@@ -1,6 +1,7 @@
 package com.cikarastudio.cikarahotelbooking.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,17 +18,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle("Home");
 
-        Button roomListButton = findViewById(R.id.btn_homeRoomList);
+        CardView roomListButton = findViewById(R.id.btn_homeRoomList);
         roomListButton.setOnClickListener(this);
-        Button myBookingButton = findViewById(R.id.btn_homeMyBooking);
+        CardView myBookingButton = findViewById(R.id.btn_homeMyBooking);
         myBookingButton.setOnClickListener(this);
-        Button galleryButton = findViewById(R.id.btn_homeGallery);
+        CardView galleryButton = findViewById(R.id.btn_homeGallery);
         galleryButton.setOnClickListener(this);
-        Button locationButton = findViewById(R.id.btn_homeLocation);
+        CardView locationButton = findViewById(R.id.btn_homeLocation);
         locationButton.setOnClickListener(this);
-        Button infoButton = findViewById(R.id.btn_homeInfo);
+        CardView infoButton = findViewById(R.id.btn_homeInfo);
         infoButton.setOnClickListener(this);
-        Button myAccountButton = findViewById(R.id.btn_homeMyAccount);
+        CardView myAccountButton = findViewById(R.id.btn_homeMyAccount);
         myAccountButton.setOnClickListener(this);
 
     }
