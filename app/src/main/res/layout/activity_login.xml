@@ -72,6 +72,7 @@
             android:textColorHint="@color/colorWhite">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_loginEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorWhite"
@@ -91,6 +92,7 @@
             app:passwordToggleTint="@color/colorWhite">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_loginPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorWhite"
@@ -119,8 +121,8 @@
             android:layout_marginTop="20dp"
             android:text="@string/login_register"
             android:textColor="@color/colorWhite"
-            android:textSize="12sp" 
-            android:textStyle="bold"/>
+            android:textSize="12sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

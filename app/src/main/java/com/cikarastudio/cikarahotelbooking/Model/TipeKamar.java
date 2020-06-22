@@ -42,6 +42,21 @@ public class TipeKamar implements Parcelable {
         }
     };
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(tipe_id);
+        parcel.writeString(nama_tipe);
+        parcel.writeString(harga);
+        parcel.writeString(kapasitas);
+        parcel.writeString(deskripsi);
+        parcel.writeString(link_gambar);
+    }
+
     public String getTipe_id() {
         return tipe_id;
     }
@@ -90,18 +105,5 @@ public class TipeKamar implements Parcelable {
         this.link_gambar = link_gambar;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(tipe_id);
-        parcel.writeString(nama_tipe);
-        parcel.writeString(harga);
-        parcel.writeString(kapasitas);
-        parcel.writeString(deskripsi);
-        parcel.writeString(link_gambar);
-    }
 }

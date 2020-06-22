@@ -38,23 +38,46 @@ public class TipeKamarAdapter extends RecyclerView.Adapter<TipeKamarAdapter.Tipe
     @NonNull
     @Override
     public TipeKamarViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(mContext).inflate(R.layout.item_kamar, parent, false);
+        View v = LayoutInflater.from(mContext).inflate(R.layout.item_tipe_kamar, parent, false);
         return new TipeKamarViewHolder(v);
+    }
+
+
+    private String convertText(String text) {
+        StringBuilder stringBuilder = new StringBuilder(text);
+        for (int i = stringBuilder.length() - 3; i > 0; i -= 3) {
+            stringBuilder.insert(i, ".");
+        }
+        return stringBuilder.toString();
+    }
+
+    private String convertUpperCase(String text){
+        String output = "";
+
+        String[] textArray = text.trim().split("\\s");
+        for (int i= 0; i<textArray.length;i++){
+            textArray[i] = textArray[i].substring(0,1).toUpperCase() + textArray[i].substring(1);
+        }
+
+        for (int i=0; i<textArray.length;i++){
+            output = output+textArray[i]+" ";
+        }
+
+        return output.trim();
     }
 
     @Override
     public void onBindViewHolder(@NonNull final TipeKamarViewHolder holder, int position) {
         TipeKamar currentItem = mTipeKamarList.get(position);
-
         String tipekamar = currentItem.getNama_tipe();
-        String harga = currentItem.getHarga();
+        String harga = "Rp. " + convertText(currentItem.getHarga());
         String kapasitas = currentItem.getKapasitas();
         String deskripsi = currentItem.getDeskripsi();
-        String img_kamar = "http://kingdom.chatomz.com/img/hotel/"+currentItem.getLink_gambar();
+        String img_kamar = "http://kingdom.chatomz.com/img/hotel/" + currentItem.getLink_gambar();
 
-        holder.tipeKamar.setText(tipekamar);
+        holder.tipeKamar.setText(convertUpperCase(tipekamar));
         holder.harga.setText(harga);
-        holder.kapasitas.setText(kapasitas+" orang/kamar");
+        holder.kapasitas.setText(kapasitas + " orang/kamar");
         holder.deskripsi.setText(deskripsi);
         Picasso.with(mContext).load(img_kamar).fit().centerCrop().into(holder.img_kamar);
 

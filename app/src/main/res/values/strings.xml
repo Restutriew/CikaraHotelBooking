@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">CikaraHotelBooking</string>
-
+    <string name="app_name">Sistem Pelayanan Booking Hotel Sapphire</string>
 
     <string name="home_room_list">Room List</string>
     <string name="home_booking_list">My Booking</string>
@@ -17,8 +16,13 @@
 
     <string name="register">Daftar</string>
     <string name="register_name">Nama Lengkap</string>
-    <string name="register_address">Alamat</string>
-    <string name="register_phoneNumber">Nomor HP</string>
+    <string name="register_email">Email</string>
+    <string name="register_password">Password</string>
+    <string name="register_konfirmasi_password">Konfirmasi Password</string>
+    <string name="register_alamat">Alamat</string>
+    <string name="register_telepon">Nomor HP</string>
 
+    <string name="link">http://ngoding.chatomz.com/cikara_hotel</string>
 
+    <string name="update">Update</string>
 </resources>

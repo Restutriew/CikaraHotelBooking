@@ -6,17 +6,24 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.Toast;
 
+import com.cikarastudio.cikarahotelbooking.Manager.SessionManager;
 import com.cikarastudio.cikarahotelbooking.R;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle("Home");
+
+        sessionManager = new SessionManager(this);
+        sessionManager.checkLogin();
 
         CardView roomListButton = findViewById(R.id.btn_homeRoomList);
         roomListButton.setOnClickListener(this);
@@ -37,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_homeRoomList:
-                Intent roomListHome = new Intent(MainActivity.this, RoomListActivity.class);
+                Intent roomListHome = new Intent(MainActivity.this, TipeKamarListActivity.class);
                 startActivity(roomListHome);
                 break;
 
